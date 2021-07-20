@@ -239,7 +239,7 @@
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
-                                    <li class="breadcrumb-item"><a href="index.html">Register User</a>
+                                    <li class="breadcrumb-item"><a href="index.html">Products</a>
                                     </li>
                                 </ol>
                             </nav>
@@ -250,28 +250,7 @@
             </div>
      
             <div class="container-fluid">
-                <div class="card">
-                    <div class="card-body">
-                         <div class="text-input">
-                         <form>
-                                     <div class="form-group">
-                                         <p>Name<p>
-                                         <input type="text" class="form-control" style="border-radius: 10px;">
-                                         <p>Username<p>
-                                         <input type="text" class="form-control" style="border-radius: 10px;">
-                                         <p>Password<p>
-                                         <input type="password" class="form-control" style="border-radius: 10px;">
-                                         <p>Email<p>
-                                         <input type="email" class="form-control" style="border-radius: 10px;">                          
-                                     </div>
-                                     <hr>
-                                     <input class="btn waves-effect waves-light btn-outline-success" type="submit" name="submit" value="Register User">
-                                     <button type="reset" class="btn waves-effect waves-light btn-outline-danger">Reset</button>
- 
-                         </form>
-                         </div>
-                    </div>
-                </div>
+                
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->

@@ -137,19 +137,19 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="dashboard.html"
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="dashboard.php"
                                 aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
                                     class="hide-menu">Dashboard</span></a></li>
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Inventory</span></li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link" href="products.html"
+                        <li class="sidebar-item"> <a class="sidebar-link" href="products.php"
                                 aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span
                                     class="hide-menu">Products
                                 </span></a>
                         </li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link" href="products.html"
+                        <li class="sidebar-item"> <a class="sidebar-link" href="addproducts.php"
                             aria-expanded="false"><i data-feather="plus" class="feather-icon"></i><span
                                 class="hide-menu">Add Products
                             </span></a>
@@ -159,13 +159,13 @@
 
                         <li class="nav-small-cap"><span class="hide-menu">Stocks</span></li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link" href="products.html"
+                        <li class="sidebar-item"> <a class="sidebar-link" href="addstocks.php"
                             aria-expanded="false"><i data-feather="plus" class="feather-icon"></i><span
                                 class="hide-menu">Add Stocks
                             </span></a>
                         </li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link" href="products.html"
+                        <li class="sidebar-item"> <a class="sidebar-link" href="dropstocks.php"
                             aria-expanded="false"><i data-feather="minus" class="feather-icon"></i><span
                                 class="hide-menu">Drop Stocks
                             </span></a>
@@ -175,13 +175,13 @@
 
                         <li class="nav-small-cap"><span class="hide-menu">Supplier</span></li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link" href="products.html"
+                        <li class="sidebar-item"> <a class="sidebar-link" href="suppliers.php"
                             aria-expanded="false"><i data-feather="truck" class="feather-icon"></i><span
                                 class="hide-menu">Suppliers
                             </span></a>
                         </li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link" href="products.html"
+                        <li class="sidebar-item"> <a class="sidebar-link" href="addsupplier.php"
                             aria-expanded="false"><i data-feather="plus" class="feather-icon"></i><span
                                 class="hide-menu">Add Supplier
                             </span></a>
@@ -190,13 +190,13 @@
                         <li class="list-divider"></li>
 
                         <li class="nav-small-cap"><span class="hide-menu">Transactions</span></li>
-                        <li class="sidebar-item"> <a class="sidebar-link" href="products.html"
+                        <li class="sidebar-item"> <a class="sidebar-link" href="transaction.php"
                             aria-expanded="false"><span
                                 class="hide-menu">Transactions
                             </span></a>
                         </li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link" href="products.html"
+                        <li class="sidebar-item"> <a class="sidebar-link" href="checkout.php"
                             aria-expanded="false"><span
                                 class="hide-menu">Checkout
                             </span></a>
@@ -207,13 +207,13 @@
                         <li class="nav-small-cap"><span class="hide-menu">Users</span></li>
 
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link"
-                            href="authentication-register1.html" aria-expanded="false"><i data-feather="users"
+                            href="customers.php" aria-expanded="false"><i data-feather="users"
                                 class="feather-icon"></i><span class="hide-menu">Customers
                             </span></a>
                     </li>
 
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link"
-                                href="authentication-register1.html" aria-expanded="false"><i data-feather="lock"
+                                href="users.php" aria-expanded="false"><i data-feather="lock"
                                     class="feather-icon"></i><span class="hide-menu">Users
                                 </span></a>
                         </li>
