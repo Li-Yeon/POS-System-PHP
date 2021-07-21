@@ -1,3 +1,16 @@
+<?php
+session_start();
+if(isset($_SESSION['currentUser']))
+    {
+
+    }
+    else
+    {
+        echo '<script>alert("You must login first!");</script>';
+        echo '<script>location.href="index.php";</script>';
+        exit();
+    }  
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -113,7 +126,7 @@
                                         class="svg-icon mr-2 ml-1"></i>
                                     Account Setting</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i data-feather="power"
+                                <a class="dropdown-item" href="javascript:void(0)" onclick = "confirmLogOut()" id="logOut"><i data-feather="power"
                                         class="svg-icon mr-2 ml-1"></i>
                                     Logout</a>
                             </div>
@@ -253,16 +266,16 @@
                 <div class="card">
                     <div class="card-body">
                          <div class="text-input">
-                         <form>
+                         <form method="POST" action="./PHP/registeruser.php">
                                      <div class="form-group">
                                          <p>Name<p>
-                                         <input type="text" class="form-control" style="border-radius: 10px;">
+                                         <input type="text" class="form-control" style="border-radius: 10px;" name="name">
                                          <p>Username<p>
-                                         <input type="text" class="form-control" style="border-radius: 10px;">
+                                         <input type="text" class="form-control" style="border-radius: 10px;" name="username">
                                          <p>Password<p>
-                                         <input type="password" class="form-control" style="border-radius: 10px;">
+                                         <input type="password" class="form-control" style="border-radius: 10px;" name="password">
                                          <p>Email<p>
-                                         <input type="email" class="form-control" style="border-radius: 10px;">                          
+                                         <input type="email" class="form-control" style="border-radius: 10px;" name="email">                          
                                      </div>
                                      <hr>
                                      <input class="btn waves-effect waves-light btn-outline-success" type="submit" name="submit" value="Register User">
@@ -320,3 +333,16 @@
 </body>
 
 </html>
+
+<script>
+    function confirmLogOut() {
+            var answer = window.confirm("Confirm log out?");
+            if (answer) {
+                window.location = "./PHP/logout.php";
+            }
+            else
+            {
+
+            }
+        }
+</script>

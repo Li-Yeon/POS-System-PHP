@@ -1,3 +1,17 @@
+<?php
+session_start();
+if(isset($_SESSION['currentUser']))
+    {
+
+    }
+    else
+    {
+        echo '<script>alert("You must login first!");</script>';
+        echo '<script>location.href="index.php";</script>';
+        exit();
+    }  
+?>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -113,7 +127,7 @@
                                         class="svg-icon mr-2 ml-1"></i>
                                     Account Setting</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i data-feather="power"
+                                <a class="dropdown-item" href="javascript:void(0)" onclick = "confirmLogOut()" id="logOut"><i data-feather="power"
                                         class="svg-icon mr-2 ml-1"></i>
                                     Logout</a>
                             </div>
@@ -265,8 +279,6 @@
                                 <div>
                                     <div class="d-inline-flex align-items-center">
                                         <h2 class="text-dark mb-1 font-weight-medium">270</h2>
-                                        <span
-                                            class="badge bg-primary font-12 text-white font-weight-medium badge-pill ml-2 d-lg-block d-md-none">+18.33%</span>
                                     </div>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Total Products</h6>
                                 </div>
@@ -297,8 +309,6 @@
                                 <div>
                                     <div class="d-inline-flex align-items-center">
                                         <h2 class="text-dark mb-1 font-weight-medium">1538</h2>
-                                        <span
-                                            class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">-18.33%</span>
                                     </div>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">New Projects</h6>
                                 </div>
@@ -637,3 +647,16 @@
 </body>
 
 </html>
+
+<script>
+    function confirmLogOut() {
+            var answer = window.confirm("Confirm log out?");
+            if (answer) {
+                window.location = "./PHP/logout.php";
+            }
+            else
+            {
+
+            }
+        }
+</script>

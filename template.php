@@ -1,3 +1,16 @@
+<?php
+session_start();
+if(isset($_SESSION['currentUser']))
+    {
+
+    }
+    else
+    {
+        echo '<script>alert("You must login first!");</script>';
+        echo '<script>location.href="index.php";</script>';
+        exit();
+    }  
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -113,7 +126,8 @@
                                         class="svg-icon mr-2 ml-1"></i>
                                     Account Setting</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i data-feather="power"
+                                <a class="dropdown-item" href="javascript:void(0)" onclick = "confirmLogOut()" id="logOut"><i data-feather="power"
+                                    class="svg-icon mr-2 ml-1"></i>><i data-feather="power"
                                         class="svg-icon mr-2 ml-1"></i>
                                     Logout</a>
                             </div>
@@ -299,3 +313,16 @@
 </body>
 
 </html>
+
+<script>
+    function confirmLogOut() {
+            var answer = window.confirm("Confirm log out?");
+            if (answer) {
+                window.location = "./PHP/logout.php";
+            }
+            else
+            {
+
+            }
+        }
+</script>

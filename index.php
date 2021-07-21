@@ -1,10 +1,14 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="author" content="Kodinger">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>My Login Page</title>
+	<title>POS System</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/my-login.css">
 </head>
@@ -20,20 +24,20 @@
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title">Login</h4>
-							<form method="POST" class="my-login-validation" novalidate="">
+							<form method="POST" class="my-login-validation" action="./PHP/login.php">
 								<div class="form-group">
-									<label for="email">Username</label>
-									<input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+									<label>Username</label>
+									<input type="text" class="form-control" name="username" value="" required autofocus>
 								</div>
 
 								<div class="form-group">
-									<label for="password">Password
+									<label>Password
 									</label>
-									<input id="password" type="password" class="form-control" name="password" required data-eye>
+									<input type="password" class="form-control" name="password" required data-eye>
 								</div>
 
 								<div class="form-group m-0">
-									<button type="submit" class="btn btn-primary btn-block">
+									<button class="btn btn-primary btn-block" name="Login">
 										Login
 									</button>
 								</div>
