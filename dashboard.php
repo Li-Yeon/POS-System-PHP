@@ -68,7 +68,7 @@ if(isset($_SESSION['currentUser']))
                     <!-- ============================================================== -->
                     <div class="navbar-brand">
                         <!-- Logo icon -->
-                        <a href="index.html">
+                        <a href="dashboard.php">
                             <b class="logo-icon">
                                 <!-- Dark Logo icon -->
                                 <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
@@ -204,6 +204,7 @@ if(isset($_SESSION['currentUser']))
                         <li class="list-divider"></li>
 
                         <li class="nav-small-cap"><span class="hide-menu">Transactions</span></li>
+
                         <li class="sidebar-item"> <a class="sidebar-link" href="transaction.php"
                             aria-expanded="false"><span
                                 class="hide-menu">Transactions

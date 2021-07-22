@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once $_SERVER['DOCUMENT_ROOT'].'/php_posv3/PHP/registeruser.php';
 if(isset($_SESSION['currentUser']))
     {
 
@@ -67,7 +67,7 @@ if(isset($_SESSION['currentUser']))
                     <!-- ============================================================== -->
                     <div class="navbar-brand">
                         <!-- Logo icon -->
-                        <a href="index.html">
+                        <a href="dashboard.php">
                             <b class="logo-icon">
                                 <!-- Dark Logo icon -->
                                 <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
@@ -258,23 +258,32 @@ if(isset($_SESSION['currentUser']))
                             </nav>
                         </div>
                     </div>
-                    
                 </div>
+                <?php
+        if(isset($_SESSION['status']))
+        {
+        ?>
+        <div class="alert alert-success" role="alert" style="margin-top:1%">
+        <?php echo $_SESSION['status']; ?>
+        </div>
+        <?php
+        unset($_SESSION['status']);
+        }
+            ?>
             </div>
-     
-            <div class="container-fluid">
+            <div class="container-fluid">             
                 <div class="card">
                     <div class="card-body">
                          <div class="text-input">
                          <form method="POST" action="./PHP/registeruser.php">
                                      <div class="form-group">
                                          <p>Name<p>
-                                         <input type="text" class="form-control" style="border-radius: 10px;" name="name">
+                                         <input type="text" class="form-control" style="border-radius: 10px;" name="name" required>
                                          <p>Username<p>
-                                         <input type="text" class="form-control" style="border-radius: 10px;" name="username">
+                                         <input type="text" class="form-control" style="border-radius: 10px;" name="username" required>
                                          <p>Password<p>
-                                         <input type="password" class="form-control" style="border-radius: 10px;" name="password">
-                                         <p>Email<p>
+                                         <input type="password" class="form-control" style="border-radius: 10px;" name="password" required>
+                                         <p>Email (Optional)<p>
                                          <input type="email" class="form-control" style="border-radius: 10px;" name="email">                          
                                      </div>
                                      <hr>
