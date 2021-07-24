@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once $_SERVER['DOCUMENT_ROOT'].'/php_posv3/PHP/table.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/php_posv3/PHP/user.php';
+
 
 if(isset($_SESSION['currentUser']))
     {
@@ -120,7 +122,7 @@ if(isset($_SESSION['currentUser']))
                                 <img src="assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle"
                                     width="40">
                                 <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
-                                        class="text-dark">Admin</span> <i data-feather="chevron-down"
+                                        class="text-dark"><?php echo $getCurrentUser;?></span> <i data-feather="chevron-down"
                                         class="svg-icon"></i></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
@@ -164,12 +166,11 @@ if(isset($_SESSION['currentUser']))
                                     class="hide-menu">Products
                                 </span></a>
                         </li>
-
-                        <li class="sidebar-item"> <a class="sidebar-link" href="addproducts.php"
-                            aria-expanded="false"><i data-feather="plus" class="feather-icon"></i><span
-                                class="hide-menu">Add Products
-                            </span></a>
-                    </li>
+                        <li class="sidebar-item"> <a class="sidebar-link" href="category.php"
+                                aria-expanded="false"><i data-feather="box" class="feather-icon"></i><span
+                                    class="hide-menu">Category
+                                </span></a>
+                        </li>
                         
                         <li class="list-divider"></li>
 
@@ -197,15 +198,10 @@ if(isset($_SESSION['currentUser']))
                             </span></a>
                         </li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link" href="addsupplier.php"
-                            aria-expanded="false"><i data-feather="plus" class="feather-icon"></i><span
-                                class="hide-menu">Add Supplier
-                            </span></a>
-                        </li>
-
                         <li class="list-divider"></li>
 
                         <li class="nav-small-cap"><span class="hide-menu">Transactions</span></li>
+
                         <li class="sidebar-item"> <a class="sidebar-link" href="transaction.php"
                             aria-expanded="false"><span
                                 class="hide-menu">Transactions
@@ -255,7 +251,7 @@ if(isset($_SESSION['currentUser']))
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
-                                    <li class="breadcrumb-item"><a href="index.html">Users</a>
+                                    <li class="breadcrumb-item">Users
                                     </li>
                                 </ol>
                             </nav>
@@ -289,8 +285,7 @@ if(isset($_SESSION['currentUser']))
                                             <td><?php echo $rows['Username'];?></td>
                                             <td><?php echo $rows['Email'];?></td>            
                                             <td class ="tableAction">
-                                            <a href="../Products/editproduct.php?editproduct=<?php echo $rows['Product_ID'];?>"><button type="button" class="btn btn-outline-success actionBtn"><i class="far fa-edit iconEdit"></i></button></a>
-                                            <a href="../Products/products.php?deleteproduct=<?php echo $rows['No'];?>" onclick="return confirm('Confirm delete product?');"><button type="button" class="btn btn-outline-danger actionBtn"><i class="far fa-trash-alt iconEdit"></i></button></a>
+                                            <a href="users.php?deleteuser=<?php echo $rows['No'];?>" onclick="return confirm('Confirm delete user?');"><button type="button" class="btn btn-outline-danger actionBtn"><i class="far fa-trash-alt iconEdit"></i></button></a>
                                             </td>
                             </tr>
                             <?php
@@ -307,8 +302,10 @@ if(isset($_SESSION['currentUser']))
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center text-muted">
-                All Rights Reserved by Adminmart. Designed and Developed by <a
-                    href="https://wrappixel.com">WrapPixel</a>.
+                All Rights Reserved by <a
+                    href="https://adminmart.com/">Adminmart</a>. Designed and Developed by <a
+                    href="https://wrappixel.com">WrapPixel</a>. System Made by <a
+                    href="https://shopee.com.my/liyeontech">LiyeonTech</a>.
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
