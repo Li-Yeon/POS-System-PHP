@@ -259,7 +259,7 @@ if(isset($_SESSION['currentUser']))
                         </div>
                     </div>                  
                 </div>
-                <a href="registeruser.php"><button type="button" class="btn waves-effect waves-light btn-outline-success" style="margin-top:1%">Add User</button></a>
+                <a href="registeruser.php"><button type="button" class="btn waves-effect waves-light btn-outline-success" style="margin-top:1%">+ Add User</button></a>
 
             </div>
      
