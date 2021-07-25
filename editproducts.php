@@ -1,8 +1,6 @@
 <?php
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'].'/php_posv3/PHP/table.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/php_posv3/PHP/products.php';
-
 if(isset($_SESSION['currentUser']))
     {
 
@@ -131,7 +129,6 @@ if(isset($_SESSION['currentUser']))
                                     Account Setting</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="javascript:void(0)" onclick = "confirmLogOut()" id="logOut"><i data-feather="power"
-                                    class="svg-icon mr-2 ml-1"></i>><i data-feather="power"
                                         class="svg-icon mr-2 ml-1"></i>
                                     Logout</a>
                             </div>
@@ -251,55 +248,59 @@ if(isset($_SESSION['currentUser']))
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
-                                    <li class="breadcrumb-item">Products
+                                    <li class="breadcrumb-item">Edit Product
                                     </li>
                                 </ol>
                             </nav>
                         </div>
-                    </div>                  
+                    </div>
                 </div>
-                <a href="addproduct.php"><button type="button" class="btn waves-effect waves-light btn-outline-success" style="margin-top:1%">+ Add Product</button></a>
-
             </div>
-     
-            <div class="container-fluid">
-                <div class="table-responsive">
-                <table class="table table-striped table-bordered">
-                                        <thead>
-                                            <tr>
-                                            <th>#</th>
-                                            <th>Product ID</th>
-                                            <th>Product Name</th>
-                                            <th>Stock</th>
-                                            <th>Category</th>
-                                            <th>Price (RM)</th>
-                                            <th>Barcode</th>
-                                            <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php
-                                        while($rows=mysqli_fetch_assoc($pdTable))
-                                    {
-                                        ?>
-                                        <tr>
-                                        <td><?php echo $rows['No'];?></td>
-                                        <td><?php echo $rows['Product_ID'];?></td>
-                                        <td><?php echo $rows['Product_Name'];?></td>
-                                        <td><?php echo $rows['Stock'];?></td>
-                                        <td><?php echo $rows['Category'];?></td>
-                                        <td><?php echo $rows['Price'];?></td>
-                                        <td><?php echo $rows['Barcode'];?></td>            
-                                            <td class ="tableAction">
-                                        <a href="editproducts.php?edit=<?php echo $rows['No'];?>"><button type="button" class="btn btn-outline-success"><i class="far fa-edit iconEdit"></i></button></a>
-                                        <a href="products.php?delete=<?php echo $rows['No'];?>" onclick="return confirm('Confirm delete product?');"><button type="button" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button></a>
-                                            </td>
-                            </tr>
-                            <?php
-                        }
-                    ?>                              
-                                        </tbody>
-                </table>
+            <div class="container-fluid">             
+                <div class="card">
+                    <div class="card-body">
+                         <div class="text-input">
+                <?php
+                while($rows=mysqli_fetch_assoc($getData))
+                { 
+                ?>
+                         <form method="POST">
+                                     <div class="form-group">
+                                         <p>Product ID<p>
+                                         <input type="text" class="form-control" style="border-radius: 10px;" name="product_ID" placeholder = "<?php echo $rows['Product_ID'];?>" readonly>
+
+                                         <p>Product Name<p>
+                                         <input type="text" class="form-control" style="border-radius: 10px;" name="product_Name" placeholder="Enter Product Name"  value="<?php echo $rows['Product_Name'];?>"required>
+
+                                         <p>Category<p>
+                                         <select class="form-control" name = "category" style="border-radius: 10px;" required>
+                                         <?php while($row = mysqli_fetch_array($result)):;?>
+                                         <option selected hidden><?php echo $rows['Category'];?></option>
+                                         <option value="<?php echo $row[1];?>"><?php echo $row[1];?></option>
+                                         <?php endwhile;?>
+                                         </select>
+
+                                         <p>Price<p>
+                                         <div class="input-group mb-3">
+                                             <div class="input-group-prepend">
+                                                 <label class="input-group-text">RM</label>
+                                             </div>
+                                         <input type="number" class="form-control" name="price" placeholder="Enter Price" value = "<?php echo $rows['Price'];?>" required>                        
+                                         </div>
+
+                                         <p>Barcode<p>
+                                         <input type="text" class="form-control" style="border-radius: 10px;" name="barcode" placeholder = "Enter Barcode (Optional)" value = "<?php echo $rows['Barcode'];?>">                        
+                                     </div>
+                                     <hr>
+                                     <button type="submit" class="btn waves-effect waves-light btn-outline-success" name="editProduct">Update Product</button>
+                                     <button type="reset" class="btn waves-effect waves-light btn-outline-danger">Reset</button>
+ 
+                         </form>
+                <?php
+                }
+                ?>
+                         </div>
+                    </div>
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -348,17 +349,8 @@ if(isset($_SESSION['currentUser']))
     <script src="assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
     <script src="assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
     <script src="dist/js/pages/dashboards/dashboard1.min.js"></script>
-    <!--This page plugins -->
-    <script src="assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="./CDN/DataTables/datatables.min.css"/>
-    <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
-    
 </body>
-<script>
-    $(document).ready( function () {
-    $('.table').DataTable();
-} );
-</script>
+
 </html>
 
 <script>
