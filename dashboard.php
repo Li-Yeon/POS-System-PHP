@@ -274,7 +274,7 @@ if(isset($_SESSION['currentUser']))
                             <div class="d-flex d-lg-flex d-md-block align-items-center">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium">270</h2>
+                                        <h2 class="text-dark mb-1 font-weight-medium"><?php echo $totalPD?></h2>
                                     </div>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Total Products</h6>
                                 </div>
@@ -289,8 +289,8 @@ if(isset($_SESSION['currentUser']))
                             <div class="d-flex d-lg-flex d-md-block align-items-center">
                                 <div>
                                     <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium"><sup
-                                            class="set-doller">RM</sup>18,306</h2>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Earnings of Month
+                                            class="set-doller">RM</sup>0</h2>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Total Earnings
                                     </h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
@@ -304,9 +304,9 @@ if(isset($_SESSION['currentUser']))
                             <div class="d-flex d-lg-flex d-md-block align-items-center">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium">1538</h2>
+                                        <h2 class="text-dark mb-1 font-weight-medium">0</h2>
                                     </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">New Projects</h6>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Total Stocks</h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
                                     <span class="opacity-7 text-muted"><i data-feather="file-plus"></i></span>
@@ -318,8 +318,8 @@ if(isset($_SESSION['currentUser']))
                         <div class="card-body">
                             <div class="d-flex d-lg-flex d-md-block align-items-center">
                                 <div>
-                                    <h2 class="text-dark mb-1 font-weight-medium">864</h2>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Projects</h6>
+                                    <h2 class="text-dark mb-1 font-weight-medium"><?php echo $totalCst?></h2>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Total Customer</h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
                                     <span class="opacity-7 text-muted"><i data-feather="globe"></i></span>
