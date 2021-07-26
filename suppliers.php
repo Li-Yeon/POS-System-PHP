@@ -203,13 +203,13 @@ if(isset($_SESSION['currentUser']))
                         <li class="nav-small-cap"><span class="hide-menu">Transactions</span></li>
 
                         <li class="sidebar-item"> <a class="sidebar-link" href="transaction.php"
-                            aria-expanded="false"><span
+                            aria-expanded="false"><i data-feather="clipboard" class="feather-icon"></i><span
                                 class="hide-menu">Transactions
                             </span></a>
                         </li>
 
                         <li class="sidebar-item"> <a class="sidebar-link" href="checkout.php"
-                            aria-expanded="false"><span
+                            aria-expanded="false"><i class="fas fa-shopping-cart"></i><span
                                 class="hide-menu">Checkout
                             </span></a>
                         </li>
