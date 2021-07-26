@@ -363,3 +363,12 @@ if(isset($_SESSION['currentUser']))
             }
         }
 </script>
+
+<script>
+    $(document).keypress(
+  function(event){
+    if (event.which == '13') {
+      event.preventDefault();
+    }
+});
+</script>
