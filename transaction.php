@@ -299,7 +299,7 @@ if(isset($_SESSION['currentUser']))
                                         <td><?php echo $rows['Cust_Name'];?></td>
                                         <td><?php echo $rows['Cust_Address'];?></td>       
                                             <td class ="tableAction" style="width:8%;">
-                                        <a href="printtc.php?edit=<?php echo $rows['TransID'];?>"><button type="button" class="btn btn-outline-success"><i class="fas fa-print"></i></button></a>
+                                        <a href="invoice.php?print=<?php echo $rows['TransID'];?>"><button type="button" class="btn btn-outline-success"><i class="fas fa-print"></i></button></a>
                                         <a href="transaction.php?delete=<?php echo $rows['No'];?>" onclick="return confirm('Confirm delete transaction?');"><button type="button" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button></a>
                                             </td>
                             </tr>
