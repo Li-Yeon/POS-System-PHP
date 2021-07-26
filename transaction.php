@@ -256,7 +256,9 @@ if(isset($_SESSION['currentUser']))
                         </div>
                     </div>                  
                 </div>
+                
                 <a href="checkout.php"><button type="button" class="btn waves-effect waves-light btn-outline-success" style="margin-top:1%">+ Add Transaction</button></a>
+                <a href="#"><button type="button" class="btn waves-effect waves-light btn-outline-success" style="margin-top:1%"><i class="far fa-file-excel" style="margin-right: 3px"></i>Print to Excel</button></a>
 
             </div>
      
@@ -300,7 +302,6 @@ if(isset($_SESSION['currentUser']))
                                         <td><?php echo $rows['Cust_Address'];?></td>       
                                             <td class ="tableAction" style="width:8%;">
                                         <a href="invoice.php?print=<?php echo $rows['TransID'];?>"><button type="button" class="btn btn-outline-success"><i class="fas fa-print"></i></button></a>
-                                        <a href="invoice.php"><button type="button" class="btn btn-outline-success"><i class="far fa-file-excel"></i></button></a>
                                         <a href="transaction.php?delete=<?php echo $rows['No'];?>" onclick="return confirm('Confirm delete transaction?');"><button type="button" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button></a>
                                             </td>
                             </tr>
