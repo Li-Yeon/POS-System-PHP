@@ -302,31 +302,40 @@ if(isset($_SESSION['currentUser']))
                                          <p>Total Price<p>
                                          <input type="number" class="form-control" id = "totalPrice" style="border-radius: 10px;" name="totalPrice" readonly>
 
-                                         <hr>
-
-                                         <p>Transaction ID<p>
-                                         <input type="text" class="form-control" style="border-radius: 10px;" name="trans_ID"  placeholder = "<?php echo $transID?>"readonly>
-
-                                         <p>Customer<p>
-                                         <select class="form-control" name = "cust_Name" style="border-radius: 10px;">
-                                         <?php while($row = mysqli_fetch_array($customerRes)):;?>
-                                         <option selected hidden value ="">Select Customer</option>
-                                         <option value="<?php echo $row[1];?>"><?php echo $row[1];?></option>
-                                         <?php endwhile;?>
-                                         </select>
-
-                                         <p>Date<p>
-                                         <input type="date" class="form-control" style="border-radius: 10px;" id="startdateID" name="date_Entry">    
-
                                      </div>
                                      <hr>
                                      <button type="submit" class="btn waves-effect waves-light btn-outline-success" name="CheckOutbtn">Add Item<i class="fas fa-arrow-down" style="margin-left: 3px;"></i></button>
-                                     <button type="reset" class="btn waves-effect waves-light btn-outline-danger">Reset</button>
-                                     <button onclick="return confirm('Confirm checkout?');" type="submit" class="btn waves-effect waves-light btn-outline-warning" id="addTransaction" name="addTransaction">Checkout<i class="fas fa-shopping-cart"></i></button>                                    
-                         </form>
+                                     <button type="reset" class="btn waves-effect waves-light btn-outline-danger">Reset</button>                                
                          </div>
                     </div>
                 </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-input">
+                                        <form method="POST">
+                                        <p>Transaction ID<p>
+                                        <input type="text" class="form-control" style="border-radius: 10px;" name="trans_ID"  placeholder = "<?php echo $transID?>"readonly>
+
+                                        <p>Customer<p>
+                                        <select class="form-control" name = "cust_Name" style="border-radius: 10px;">
+                                        <?php while($row = mysqli_fetch_array($customerRes)):;?>
+                                        <option selected hidden value ="">Select Customer</option>
+                                        <option value="<?php echo $row[1];?>"><?php echo $row[1];?></option>
+                                        <?php endwhile;?>
+                                        </select>
+
+                                        <p>Date<p>
+                                        <input type="date" class="form-control" style="border-radius: 10px;" id="startdateID" name="date_Entry">  
+                                        
+                                        <hr>
+
+                                        <button onclick="return confirm('Confirm checkout?');" type="submit" class="btn waves-effect waves-light btn-outline-warning" id="addTransaction" name="addTransaction">Checkout<i class="fas fa-shopping-cart"></i></button>    
+                                        </form>
+                        </div>
+                    </div>               
+                </div>
+
                 <div class="table-responsive">
                 <table class="table table-striped table-bordered">
                                         <thead>
