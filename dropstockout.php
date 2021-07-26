@@ -1,9 +1,6 @@
 <?php
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'].'/php_posv3/PHP/table.php';
-require_once $_SERVER['DOCUMENT_ROOT'].'/php_posv3/PHP/stock.php';
-
-
+require_once $_SERVER['DOCUMENT_ROOT'].'/php_posv3/PHP/stockout.php';
 if(isset($_SESSION['currentUser']))
     {
 
@@ -132,7 +129,6 @@ if(isset($_SESSION['currentUser']))
                                     Account Setting</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="javascript:void(0)" onclick = "confirmLogOut()" id="logOut"><i data-feather="power"
-                                    class="svg-icon mr-2 ml-1"></i>><i data-feather="power"
                                         class="svg-icon mr-2 ml-1"></i>
                                     Logout</a>
                             </div>
@@ -252,54 +248,52 @@ if(isset($_SESSION['currentUser']))
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
-                                    <li class="breadcrumb-item">Stock Out
+                                    <li class="breadcrumb-item">Add Stock
                                     </li>
                                 </ol>
                             </nav>
                         </div>
-                    </div>                  
+                    </div>
                 </div>
-                <a href="dropstockout.php"><button type="button" class="btn waves-effect waves-light btn-outline-danger" style="margin-top:1%">- Drop Stocks</button></a>
-
+                <?php
+        if(isset($_SESSION['status']))
+        {
+        ?>
+        <div class="alert alert-success" role="alert" style="margin-top:1%">
+        <?php echo $_SESSION['status']; ?>
+        </div>
+        <?php
+        unset($_SESSION['status']);
+        }
+            ?>
             </div>
-     
-            <div class="container-fluid">
-                <div class="table-responsive">
-                <table class="table table-striped table-bordered">
-                                        <thead>
-                                            <tr>
-                                            <th>#</th>
-                                            <th>Product ID</th>
-                                            <th>Product Name</th>
-                                            <th>Stock</th>
-                                            <th>Remarks</th>
-                                            <th>Date Out</th>
-                                            <th>Issued By</th>
-                                            <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php
-                                        while($rows=mysqli_fetch_assoc($stockOutTable))
-                                    {
-                                        ?>
-                                        <tr>
-                                        <td><?php echo $rows['No'];?></td>
-                                        <td><?php echo $rows['Product_ID'];?></td>
-                                        <td><?php echo $rows['Product_Name'];?></td>
-                                        <td><?php echo $rows['Stock'];?></td>
-                                        <td><?php echo $rows['Remarks'];?></td>
-                                        <td><?php echo $rows['Date_Out'];?></td>
-                                        <td><?php echo $rows['Issued'];?></td>            
-                                            <td class ="tableAction">
-                                        <a href="dropstocks.php?undo=<?php echo $rows['No'];?>" onclick="return confirm('Confirm undo drop stock?');"><button type="button" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button></a>
-                                            </td>
-                            </tr>
-                            <?php
-                        }
-                    ?>                              
-                                        </tbody>
-                </table>
+            <div class="container-fluid">             
+                <div class="card">
+                    <div class="card-body">
+                         <div class="text-input">
+                         <form method="POST">
+                                     <div class="form-group">
+                                         <p>Out Date<p>
+                                         <input type="date" class="form-control" style="border-radius: 10px;" id="startdateID" name="date_Out">
+                                         <p>Product<p>
+                                         <select class="form-control" name = "product_ID" style="border-radius: 10px;" required>
+                                         <?php while($row = mysqli_fetch_array($productRes)):;?>
+                                         <option selected hidden value ="">Select Product</option>
+                                         <option value="<?php echo $row[1];?>"><?php echo $row[1];?> | <?php echo $row[2];?></option>
+                                         <?php endwhile;?>
+                                         </select>           
+                                         <p>Remarks<p>
+                                         <textarea class="form-control" rows="3" name = "remarks" placeholder = "Enter Remarks"></textarea>                                                             
+                                         <p>Stock<p>
+                                         <input type="number" class="form-control" style="border-radius: 10px;" name="stock">
+                                     </div>
+                                     <hr>
+                                     <button type="submit" class="btn waves-effect waves-light btn-outline-success" name="dropStock">Drop Stock</button>
+                                     <button type="reset" class="btn waves-effect waves-light btn-outline-danger">Reset</button>
+ 
+                         </form>
+                         </div>
+                    </div>
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -348,17 +342,8 @@ if(isset($_SESSION['currentUser']))
     <script src="assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
     <script src="assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
     <script src="dist/js/pages/dashboards/dashboard1.min.js"></script>
-    <!--This page plugins -->
-    <script src="assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="./CDN/DataTables/datatables.min.css"/>
-    <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
-    
 </body>
-<script>
-    $(document).ready( function () {
-    $('.table').DataTable();
-} );
-</script>
+
 </html>
 
 <script>
@@ -372,4 +357,7 @@ if(isset($_SESSION['currentUser']))
 
             }
         }
+</script>
+<script>
+document.getElementById('startdateID').value = new Date().toISOString().slice(0, 10);
 </script>

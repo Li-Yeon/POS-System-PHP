@@ -42,4 +42,38 @@ if (isset($_GET['delete'])){
 
     echo '<script>location.href="./addstocks.php"</script>';
 } 
+
+//Undo Stock Out
+if (isset($_GET['undo'])){
+
+    //Get Stock Undo No
+    $idStockOut = $_GET['undo'];
+    $query = "DELETE FROM stock_out WHERE No = '$idStockOut'";
+    $reset = "ALTER TABLE stock_out DROP No;ALTER TABLE stock_out AUTO_INCREMENT = 1;ALTER TABLE stock_out ADD No int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;";
+
+    $getUndoStockQuery = "SELECT * FROM stock_out WHERE No='$idStockOut'";
+    $getUndoStockSqli = mysqli_query($conn, $getUndoStockQuery);
+    $getUndoStock = mysqli_fetch_assoc($getUndoStockSqli);
+    $getUndoStock = $getUndoStock['Stock'];
+    $getUndoIDSqli = mysqli_query($conn, $getUndoStockQuery);       
+    $getUndoID = mysqli_fetch_assoc($getUndoIDSqli);  
+    $getUndoID = $getUndoID['Product_ID'];
+    $getUndoStock = (int)$getUndoStock;
+
+    //Get Stock
+    $getCurrentStockQuery = "SELECT Stock from products where Product_ID=" . "'" . $getUndoID . "'";
+    $getCurrentStockSqli = mysqli_query($conn, $getCurrentStockQuery);
+    $getCurrentStock = mysqli_fetch_assoc($getCurrentStockSqli);
+    $getCurrentStock = $getCurrentStock['Stock'];
+    $getCurrentStock = (int)$getCurrentStock;
+
+
+    $newStock = $getCurrentStock + $getUndoStock;
+    $updateUndoProductQuery = "UPDATE products SET Stock ='$newStock' WHERE Product_ID='$getUndoID'";
+    $updateUndoProductSqli = mysqli_query($conn, $updateUndoProductQuery) or die (mysqli_error($conn));
+    $resultDelete = mysqli_query($conn, $query);
+    $resetIncrement = mysqli_multi_query($conn, $reset);
+
+    echo '<script>location.href="./dropstocks.php"</script>';
+} 
 ?>
