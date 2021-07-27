@@ -1,4 +1,19 @@
 <?php
+$servername = "localhost";
+$dbusername = "root";
+$dbpassword = "";
+$dbname = "php_posv3";
+
+$conn = mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
+
+if (!$conn) {
+    die("Connection failed: " . nysqli_connect_error());
+}
+
+//Transaction Table
+$transactionQuery = "SELECT * FROM transaction WHERE TransID=".$this->items;
+$transactionTable = mysqli_query($conn, $transactionQuery);
+
 // (A) HTML HEADER & STYLES
 $this->data = "<!DOCTYPE html><html><head><style>".
 "html,body{font-family:sans-serif}#invoice{max-width:800px;margin:0 auto}#company,#billship{margin-bottom:30px}#billship,#company,#items{width:100%;border-collapse:collapse}#company td,#billship td,#items td,#items th{padding:10px}#company td{vertical-align:top}#bigi{margin-bottom:20px;font-size:28px;font-weight:700;color:#258ec7}#co-addr{font-size:.95em;color:#888}#co-right img{max-width:180px;height:auto}#billship td{width:33%}#items th{text-align:left;background:#98c5dc;padding:20px 10px}#items td{background:#e4eff5;border-bottom:1px solid #c8d2d7}.idesc{color:#6099b6}#items tr.ttl td{background:#98c5dc;border-bottom:none;font-weight:700}.right{text-align:right}#notes{background:#e4eff5;padding:10px;margin-top:30px}".
@@ -27,9 +42,11 @@ foreach ($this->head as $i) {
 $this->data .= "</td></tr></table>";
 
 // (F) ITEMS
-$this->data .= "<table id='items'><tr><th>ITEM</th><th>QUANTITY</th><th>UNIT PRICE</th><th>AMOUNT</th></tr>";
-foreach ($this->items as $i) {
-	$this->data .= "<tr><td><div>".$i[0]."</div>".($i[1]==""?"":"<small class='idesc'>$i[1]</small>")."</td><td>".$i[2]."</td><td>".$i[3]."</td><td>".$i[4]."</td></tr>";
+$this->data .= "<table id='items'><tr><th>Item</th><th>Price</th><th>Quantity</th><th>Amount</th></tr>";
+while($rows=mysqli_fetch_assoc($transactionTable))
+{
+	//$this->data .= "<tr><td><div>".$rows['Product_Name']."</td><td>".$rows['Price']."</td><td>".$rows['Quantity']."</td><td>".$rows['Total']."</td></tr>";
+	$this->data .= "<tr><td><div>".$rows['Product_Name']."</div>".($rows['Product_ID']==""?"":"<small class='idesc'>$rows[Product_ID]</small>")."</td><td>".$rows['Price']."</td><td>".$rows['Quantity']."</td><td>".$rows['Total']."</td></tr>";
 }
 
 // (G) TOTALS

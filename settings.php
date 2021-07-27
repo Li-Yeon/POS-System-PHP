@@ -1,6 +1,5 @@
 <?php
-session_start();
-require_once $_SERVER['DOCUMENT_ROOT'].'/php_posv3/PHP/customer.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/php_posv3/PHP/settings.php';
 if(isset($_SESSION['currentUser']))
     {
 
@@ -246,7 +245,7 @@ if(isset($_SESSION['currentUser']))
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
-                                    <li class="breadcrumb-item">Add Customer
+                                    <li class="breadcrumb-item">Settings
                                     </li>
                                 </ol>
                             </nav>
@@ -269,21 +268,33 @@ if(isset($_SESSION['currentUser']))
                 <div class="card">
                     <div class="card-body">
                          <div class="text-input">
-                         <form method="POST">
+                         <?php
+                         while($rows=mysqli_fetch_assoc($getData))
+                         { 
+                         ?>
+                         <form method="POST" enctype="multipart/form-data">
                                      <div class="form-group">
-                                         <p>Customer<p>
-                                         <input type="text" class="form-control" style="border-radius: 10px;" name="customer_Name" placeholder = "Enter Customer Name" required>
-                                         <p>Address<p>
-                                         <textarea class="form-control" rows="3" name = "customer_Address" placeholder = "Enter Customer Address"></textarea>                    
-                                         <p>Tel<p>
-                                         <input type="text" class="form-control" style="border-radius: 10px;" name="customer_Tel" placeholder = "Enter Customer Tel">               
-                                         <p>Email<p>
-                                         <input type="email" class="form-control" style="border-radius: 10px;" name="customer_Email" placeholder = "Enter Customer Email">           
+                                         <p>Company Name<p>
+                                         <input type="text" class="form-control" style="border-radius: 10px;" name="company_Name" placeholder="Enter Company Name" value="<?php echo $rows['CompanyName'];?>"required>
+                                         <p>Company Address<p>
+                                         <textarea class="form-control" rows="3" name = "company_Address" placeholder = "Enter Company Address"><?php echo $rows['CompanyAddress'];?></textarea> 
+                                         <p>Company Tel<p>
+                                         <input type="text" class="form-control" style="border-radius: 10px;" name="company_Tel" placeholder="Enter Company Tel" value="<?php echo $rows['CompanyTel'];?>">   
+                                         <p>Company Email<p>
+                                         <input type="text" class="form-control" style="border-radius: 10px;" name="company_Email" placeholder = "Enter Company Email" value="<?php echo $rows['CompanyEmail'];?>"> 
+                                         <p>Company Logo<p>
+                                        <fieldset class="form-group">
+                                        <input type="file" class="form-control-file" name="image">
+                                        </fieldset>
+
                                      </div>
                                      <hr>
-                                     <button type="submit" class="btn waves-effect waves-light btn-outline-success" name="addCustomer">Add Customer</button>
+                                     <button type="submit" class="btn waves-effect waves-light btn-outline-success" name="updateCompany">Update Details</button>
                                      <button type="reset" class="btn waves-effect waves-light btn-outline-danger">Reset</button>
                          </form>
+                         <?php
+                         }
+                         ?>
                          </div>
                     </div>
                 </div>
@@ -349,4 +360,13 @@ if(isset($_SESSION['currentUser']))
 
             }
         }
+</script>
+
+<script>
+    $(document).keypress(
+  function(event){
+    if (event.which == '13') {
+      event.preventDefault();
+    }
+});
 </script>

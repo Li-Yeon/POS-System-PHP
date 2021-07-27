@@ -4,7 +4,7 @@ require "invlib/invoicr.php";
 
 // (B) SET INVOICE DATA
 // (B1) COMPANY INFORMATION
-/* RECOMMENDED TO JUST PERMANENTLY CODE INTO INVOICR/INVOICR.PHP > LINE 13
+
 $invoicr->set("company", [
 	"http://localhost/code-boxx-logo.png",
 	"D:/http/code-boxx-logo.png", 
@@ -13,7 +13,7 @@ $invoicr->set("company", [
 	"Phone: xxx-xxx-xxx | Fax: xxx-xxx-xxx",
 	"https://code-boxx.com",
 	"doge@code-boxx.com"
-]); */
+]); 
 
 // (B2) INVOICE HEADER
 $invoicr->set("head", [

@@ -9,13 +9,13 @@ class Invoicr {
   private $pathP = __DIR__ . DIRECTORY_SEPARATOR . "PDF" . DIRECTORY_SEPARATOR;
 
   // (B) FLAGS & TEMP
-  private $template = "simple"; // INVOICE TEMPLATE TO USE
+  private $template = "blueberry"; // INVOICE TEMPLATE TO USE
   private $data = null; // TEMP DATA TO GENERATE INVOICE
 
   // (C) INVOICE DATA
   // (C1) COMPANY HEADER - CHANGE TO YOUR OWN!
-  private $company = [
-    "http://localhost/code-boxx-logo.png", // URL TO COMPANY LOGO, FOR HTML INVOICES
+    private $company = [
+    "-", // URL TO COMPANY LOGO, FOR HTML INVOICES
     "D:/http/code-boxx-logo.png", // FILE PATH TO COMPANY LOGO, FOR PDF/DOCX INVOICES
     "LiyeonTech", 
     "Street Address, City, State, Zip",
@@ -73,13 +73,13 @@ class Invoicr {
     $this->items = [];
     $this->totals = [];
     $this->notes = [];
-    $this->template = "simple";
+    $this->template = "blueberry";
     $this->data = null;
   }
 
   /*** [II] INVOICR TEMPLATE + OUTPUT ***/
   // (E) TEMPLATE () : USE THE SPECIFIED TEMPLATE
-  function template ($template="simple") {
+  function template ($template="blueberry") {
     $this->template = $template;
   }
 
