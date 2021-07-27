@@ -1,15 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/php_posv3/PHP/registeruser.php';
-if(isset($_SESSION['currentUser']))
-    {
 
-    }
-    else
-    {
-        echo '<script>alert("You must login first!");</script>';
-        echo '<script>location.href="index.php";</script>';
-        exit();
-    }  
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">

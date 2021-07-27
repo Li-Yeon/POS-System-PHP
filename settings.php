@@ -298,6 +298,12 @@ if(isset($_SESSION['currentUser']))
                          </div>
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p>Reset System<p>
+                        <button type="button" onclick = "confirmReset()" class="btn waves-effect waves-light btn-outline-danger">RESET SYSTEM</button>
+                    </div>
+                </div>            
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
@@ -363,10 +369,21 @@ if(isset($_SESSION['currentUser']))
 </script>
 
 <script>
-    $(document).keypress(
-  function(event){
-    if (event.which == '13') {
-      event.preventDefault();
-    }
-});
+    function confirmReset() {
+            var answer = window.confirm("Are you sure you want to reset system? Deleted files can't be recovered.\nDatas below will be deleted:\n1. Products\n2. Category\n3. Stocks\n4. Suppliers\n5. Transactions\n6. Customers");
+            if (answer) {
+                var answer2 = window.confirm("Press OK again to confirm.")
+                if (answer2) {
+                window.location = "./PHP/resetsystem.php";
+                }
+                else{
+                    
+                }
+            }
+            else
+            {
+
+            }
+        }
 </script>
+

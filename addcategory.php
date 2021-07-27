@@ -271,8 +271,6 @@ if(isset($_SESSION['currentUser']))
                          <div class="text-input">
                          <form method="POST">
                                      <div class="form-group">
-                                         <p>No<p>
-                                         <input type="text" class="form-control" style="border-radius: 10px;" name="no" placeholder = "<?php echo $nextNo?>" readonly>
                                          <p>Category<p>
                                          <input type="text" class="form-control" style="border-radius: 10px;" name="category" placeholder="Enter Category Name" required>                       
                                      </div>
