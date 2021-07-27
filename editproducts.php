@@ -287,7 +287,12 @@ if(isset($_SESSION['currentUser']))
                                          </div>
 
                                          <p>Barcode<p>
-                                         <input type="text" class="form-control" style="border-radius: 10px;" name="barcode" placeholder = "Enter Barcode (Optional)" value = "<?php echo $rows['Barcode'];?>">                        
+                                             <div class="input-group">
+                                             <input type="text" class="form-control" name="barcode" placeholder = "Enter Barcode (Optional)"value = "<?php echo $rows['Barcode'];?>">    
+                                             <div class="input-group-append">
+                                             <a href="barcode.php?code=<?php echo $rows['Barcode'];?>"><button type="button"class="btn btn-outline-secondary">Preview Barcode</button></a>                                                                               
+                                             </div>                                              
+                                             </div>
                                      </div>
                                      <hr>
                                      <button type="submit" class="btn waves-effect waves-light btn-outline-success" name="editProduct">Update Product</button>
@@ -371,4 +376,8 @@ if(isset($_SESSION['currentUser']))
       event.preventDefault();
     }
 });
+</script>
+
+<script>
+
 </script>

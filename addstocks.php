@@ -258,6 +258,8 @@ if(isset($_SESSION['currentUser']))
                     </div>                  
                 </div>
                 <a href="addstockin.php"><button type="button" class="btn waves-effect waves-light btn-outline-success" style="margin-top:1%">+ Add Stocks</button></a>
+                <a href="#"><button type="button" class="btn waves-effect waves-light btn-outline-success" style="margin-top:1%"><i class="far fa-file-excel" style="margin-right: 3px"></i>Print to Excel</button></a>
+
 
             </div>
      
